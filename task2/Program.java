@@ -6,19 +6,29 @@ public class Program {
 
     public static void main(String[] args) {
 
-        Worker[] workers = EmployeeFabric.generateEmployees(15);
-        for (Worker worker : workers) {
-            System.out.println(worker);
+        Employee[] employees = EmployeeFabric.generateEmployees(15, Freelancer.class);
+        for (Employee employee : employees) {
+            System.out.println(employee);
         }
 
         System.out.println();
         System.out.println("***");
+        System.out.println("Сортировка по возрасту:");
+
+        Arrays.sort(employees, new AgeComparator());  //Сортировка по возрасту
+
+        for (Employee employee : employees) {
+            System.out.println(employee);
+        }
+
         System.out.println();
+        System.out.println("***");
+        System.out.println("Сортировка по зарплате:");
 
-        Arrays.sort(workers);
+        Arrays.sort(employees, new SalaryComparator());  // Сортировка по зарплате
 
-        for (Worker worker : workers) {
-            System.out.println(worker);
+        for (Employee employee : employees) {
+            System.out.println(employee);
         }
     }
 
